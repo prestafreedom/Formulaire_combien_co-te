@@ -22,13 +22,11 @@ interface IFormData{
     Combienmange:string;
     Casaccident:boolean;
     ChangeHousemade:boolean;
-
 }
 interface IFormContext{
     Next: (StepNumber: number) => void;
     Back: (StepNumber: number) => void;
     
-
     step:number;
     formData:IFormData;
     setFormData:Dispatch<SetStateAction<IFormData>>;
@@ -102,11 +100,6 @@ export function FormProvider({children}: IProps){
     function Back(StepNumber:number){
             setStep((prevValue) => prevValue - StepNumber);
         }
-    
-    
-    
-   
-    
     console.log({formData});
     return (
     <FormContext.Provider value={{Next,Back,step,formData,setFormData}}>

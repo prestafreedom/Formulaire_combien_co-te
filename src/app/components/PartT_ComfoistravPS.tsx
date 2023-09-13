@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import DropDown from "./DropDown";
+import { Fragment, useState } from 'react'
+import { Listbox, Transition } from '@headlessui/react'
+import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid';
+
+
 import { type } from "os";
 import { createClient } from '@supabase/supabase-js';
 import { useForm} from 'react-hook-form';
@@ -8,37 +11,16 @@ type TFormValues = {
   email:string;
   Travailfois:string,
  };
-const Menu: React.FC = (): JSX.Element => {
-  const [showDropDown, setShowDropDown] = useState<boolean>(true);
-  const [selectedCity, setSelectedCity] = useState<string>("1 fois par semaine");
-
-  const cities = () => {
-    return ["1 fois par semaine", "2 fois par semaine", "3 fois par semaine",
-     "4  fois par semaine","5 fois par semaine","6 fois par semaine",];
-  };
-  /**
-   * Toggle the drop down menu
-   */
-  const toggleDropDown = () => {
-    setShowDropDown(!showDropDown);
-  };
-  /**
-   * Hide the drop down menu if click occurs
-   * outside of the drop-down element.
-   *
-   * @param event  The mouse event
-   */
-  
-  /**
-   * Callback function to consume the
-   * city name from the child component
-   *
-   * @param city  The selected city
-   */
-  // const citySelection = (city: string): void => {
-  //   setSelectCity(city);
-  //   console.log(city);  
-  // };
+  const Menu: React.FC = (): JSX.Element => {
+  const [selectedCity, setSelectedCity] = useState<string>("1 fois par jour");
+  const people = [
+    { name: 'une fois par Semaine' },
+    { name: '2 fois par Semaine' },
+    { name: '3 fois par Semaine' },
+    { name: '4 fois par Semaine' },
+    { name: '4 fois par Semaine' },
+  ]
+  const [selected, setSelected] = useState(people[0])
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
   const {Next,Back,setFormData,formData} = useformState();
   const { register,handleSubmit} =useForm<TFormValues>({
@@ -53,9 +35,10 @@ const Menu: React.FC = (): JSX.Element => {
 
   const { data: insertedData, error } = await supabase
   .from('Leads')
-  .update({ Travailfois: selectedCity })
+  .update({ Travailfois: selected.name })
   .eq('email', EmailForUpdate);// Use a different property name
     Next(1);
+    
 }
   return (
     <>
@@ -72,24 +55,62 @@ const Menu: React.FC = (): JSX.Element => {
 
   <div className="text-center  flex items-center  drop flex-col  " >
   
-      <button type="button"
-    {...register('Travailfois')} 
-      >
-        <button className="bg-blue-600 text-white " >{selectedCity ?  selectedCity :selectedCity } </button>
-        {showDropDown && (
-          <DropDown
-  cities={cities()}
-  showDropDown={showDropDown}
-  toggleDropDown={toggleDropDown}
-  citySelection={(city: string) => setSelectedCity(city)}
-/>
-
-        )}
-      </button>
+  <div className="fixed mb-12 w-62">
+      <Listbox value={selected}  {...register('Travailfois')} onChange={setSelected} >
+        <div className="relative mt-1">
+          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+            <span className="block truncate">{selected.name}</span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <ChevronUpDownIcon
+                className="h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
+            </span>
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className="relative mt-1  mb-10 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+              {people.map((person, personIdx) => (
+                <Listbox.Option
+                  key={personIdx}
+                  className={({ active }) =>
+                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                      active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
+                    }`
+                  }
+                  value={person}
+                >
+                  {({ selected }) => (
+                    <>
+                      <span
+                        className={`block truncate ${
+                          selected ? 'font-medium' : 'font-normal'
+                        }`}
+                      >
+                        {person.name}
+                      </span>
+                      {selected ? (
+                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                          <CheckIcon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                      ) : null}
+                    </>
+                  )}
+                </Listbox.Option>
+              ))}
+            </Listbox.Options>
+          </Transition>
+        </div>
+      </Listbox>
+    </div>
       </div>
   </div>
   <div className="text-center mt-6 flex justify-evenly ">
-    <button type="button" onClick={() => Back(1)}className="text-l  text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
+    <button type="button" onClick={() => Back(1)} className="text-l  text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
     <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Next</button>
   </div>
 </form>
