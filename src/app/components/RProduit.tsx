@@ -8,6 +8,11 @@ import { useState } from "react";
   email:string;
    radiochoice1:string;
    rProduits:boolean;
+   coutPTM:number;
+   coutPTH:number; 
+   radiochoice2:string;
+   coutTP:number;
+   coutOndemande:number;
  };
 export default function PTP(){
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
@@ -22,21 +27,53 @@ export default function PTP(){
   const RP=data.rProduits;
   const EmailForUpdate =  data.email;
   const CHois=data.radiochoice1;
+  console.log(CHois)
+  let cout;
+  if(data.radiochoice2==="Mensuel"){
+    cout =data.coutPTM;
+  }else if(data.radiochoice2==="Hebdomadaire"){
+    cout =data.coutPTH;
+  
+  }else if(data.radiochoice1==='part-time'){
+    cout=data.coutTP;
+  }
+  else if(data.radiochoice1==='on-demand'){
+    cout=data.coutOndemande;
+  }
+
   if(rP==true){
     const { data: insertedData, error } = await supabase
     .from('Leads')
     .update({Prooutils:true})
     .eq('email',EmailForUpdate)// Use a different property name
-   console.log({CHois})
+   
     Next(1);
-  }else if(rP==false)
-  {
-    const { data: insertedData, error } = await supabase
-    .from('Leads')
-    .update({Prooutils:false})
-    .eq('email',EmailForUpdate)// Use a different property name
-    console.log(rP);
-    Next(1);
+  }else if(rP==false){
+    // Retrieve the current value of Cout from the database
+    const { data: existingData, error: existingError } = await supabase
+      .from('Leads')
+      .select('Cout')
+      .eq('email', EmailForUpdate);
+    if (existingError) {
+      console.error(existingError);
+      // Handle the error
+    } else {
+      // Calculate the new value of Cout by adding 120 to the existing value
+      cout = (existingData[0]?.Cout || 0) + 120;
+
+      // Update the database with the new value of Cout
+      const { data: insertedData, error } = await supabase
+        .from('Leads')
+        .update({Prooutils:false,Cout:cout })
+        .eq('email', EmailForUpdate);
+
+      if (error) {
+        console.error(error);
+        // Handle the error
+      } else {
+        Next(1);
+      }
+    }
   }
 }
 function handleBackButtonClick(data: TFormValues) {

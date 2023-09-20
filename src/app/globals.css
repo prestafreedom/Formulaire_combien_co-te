@@ -69,3 +69,9 @@ button.active {
     margin-bottom: 230px;
     left: 0;
 }
+.popup{
+ width: 600px;
+ height: 600px;
+ background-color: rgba(6, 107, 165, 0.74);
+ backdrop-filter: blur(15px);
+}

@@ -25,7 +25,7 @@ export default function ChangeHousemade(){
     .from('Leads')
     .update({ChangeHousemade:true})
     .eq('email',EmailForUpdate)// Use a different property name
-    //Next();
+    Next(1);
   }else if(rP==false)
   {
     const { data: insertedData, error } = await supabase
@@ -33,7 +33,7 @@ export default function ChangeHousemade(){
     .update({ChangeHousemade:false})
     .eq('email',EmailForUpdate)// Use a different property name
     console.log(rP);
-    //Next();
+    Next(1);
   }
 }
 //  isCreated ? (
@@ -51,7 +51,7 @@ export default function ChangeHousemade(){
   <img src="Logo.png" alt="Circle" className="  object-cover" />
 </div>
 </div>			
-    <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer"> En cas d'accident au travail,êtes-vous responsable ? </p>
+    <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer"> Devez vous changer de feme de ménage de temps en temps ?Ensuite,réexpliquez à nouveau le système de la maison ? </p>
   </div>
   <div className="space-y-4 ">
 
@@ -62,7 +62,7 @@ export default function ChangeHousemade(){
     // Set RP to true when "Oui" is clicked
     setRP(true);
   }}
-  className="text-l border border-indigo-950 my-4 hover:text-white hover:border-white text-zinc-600 bg-gray-200 rounded-xl hover:bg-blue-600 text-white font-semibold py-2 px-4"
+  className="text-l border border-indigo-950 my-4 hover:text-white hover:border-white text-zinc-600 bg-gray-200 rounded-xl hover:bg-blue-600 font-semibold py-2 px-4"
 >
   Oui
 </button>
@@ -72,14 +72,14 @@ export default function ChangeHousemade(){
     // Set RP to false when "Non" is clicked
     setRP(false);
   }}
-  className="text-l border border-indigo-950 text-white bg-gray-200 hover:border-white rounded-xl hover:text-white hover:bg-blue-600 text-zinc-600 font-semibold py-2 px-4"
+  className="text-l border border-indigo-950 text-white bg-gray-200 hover:border-white rounded-xl hover:text-white hover:bg-blue-600 font-semibold py-2 px-4"
 >
   Non
 </button> </div>
   </div>
   <div className="text-center mt-6 flex justify-evenly ">
-    <button type="button" onClick={() => Back(1)} className="text-l  text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
-    <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Next</button>
+    <button type="button" onClick={() => Back(1)} className="text-l  text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Back</button>
+    <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Next</button>
   </div>
 </form>
 </>

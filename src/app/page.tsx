@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { FormProvider } from './components/FormContext';
 import { FormStep } from './components/FormStep';
 import ComfoistravPS from './components/PartT_ComfoistravPS';
+import Casaccident from './components/Casaccident';
 export default function Home() {
     const [step,setstep]=useState(1);
   return (

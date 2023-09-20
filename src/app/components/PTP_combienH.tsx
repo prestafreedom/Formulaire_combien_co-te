@@ -6,7 +6,7 @@ import {useformState } from "./FormContext";
  type TFormValues = {
   email:string;
   combienparmois:string;
-  
+  coutPTH:number,
  };
 export default function PTP_combienM(){
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
@@ -16,26 +16,18 @@ export default function PTP_combienM(){
   });
   async function onHandleFormSubmit(data:TFormValues)
 {
-  
   setFormData(prevFormData => ({ ...prevFormData,...data, SalaireM }));
   const SalaireM = data.combienparmois;
   const EmailForUpdate =  data.email;
-
-
+  let cout = parseFloat(SalaireM) * 4;
+           
     const { data: insertedData, error } = await supabase
     .from('Leads')
-    .update({CM:SalaireM})
+    .update({CM:SalaireM,Cout:cout })
     .eq('email',EmailForUpdate)// Use a different property name
-    console.log(SalaireM);
+    console.log(cout);
     Next(1);
 }
-
-//  isCreated ? (
-//   <div>
-//     <h1>Account created successfully</h1>
-//     <pre>{JSON.stringify(formData)}</pre>
-//   </div>
-//  ):
  return(
   <>
 <form className="py-12 px-12 bg-white rounded-2xl shadow-xl z-20" onSubmit={handleSubmit(onHandleFormSubmit)}>
@@ -58,7 +50,7 @@ export default function PTP_combienM(){
 
   </div>
   <div className="text-center mt-6 flex justify-evenly ">
-    <button type="button" onClick={() => Back(1)}className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
+    <button type="button" onClick={() => Back(2)}className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
     <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Next</button>
   </div>
 </form>

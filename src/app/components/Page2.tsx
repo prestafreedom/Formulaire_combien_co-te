@@ -48,8 +48,8 @@ export default function Page2(){
         <input required  {...register('tele')} type="text" placeholder="Téle" className="block text-sm py-3 px-4 rounded-lg w-full border outline-none" />
         </div>
 			<div className="text-center mt-6 flex justify-evenly">
-    <button type="button" onClick={() => Back(1)} className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
-    <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Next</button>
+    <button type="button" onClick={() => Back(1)} className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Back</button>
+    <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Next</button>
   </div>
 		
         </form>

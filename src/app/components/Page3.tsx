@@ -73,7 +73,7 @@ export default function Page3(){
 <div className="text-center flex justify-space-between py-2">
   <label className="radio-label"> 
     <input required type="radio" {...register('radiochoice1')}  value="part-time" name="radiochoice1" className="radio-button" />
-    <span>Temps Parriel</span>
+    <span>Temps Parciel</span>
   </label>
 </div>
     
@@ -85,8 +85,8 @@ export default function Page3(){
 </div>
   </div>
   <div className="text-center mt-6 flex justify-evenly ">
-    <button type="button" onClick={() => Back(1)} className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Back</button>
-    <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Next</button>
+    <button type="button" onClick={() => Back(1)} className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Back</button>
+    <button type="submit" className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Next</button>
   </div>
 </form>
 </>

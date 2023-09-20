@@ -46,7 +46,7 @@ export default function Page1(){
     </div>
 			<div className="text-center mt-6">
         
-				<button  className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 text-white font-semibold py-2 px-4">Suivant</button>
+				<button  className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Suivant</button>
 			</div>
 		</div>
         </form>

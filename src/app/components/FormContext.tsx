@@ -19,9 +19,13 @@ interface IFormData{
     partTSalPS:string;
     onDravailfois:string;
     combChaqF:string;
-    Combienmange:string;
+    Combienmange:number;
     Casaccident:boolean;
     ChangeHousemade:boolean;
+    coutPTM:number;
+    coutPTH:number;
+    coutTP:number;
+    coutOndemande:number;
 }
 interface IFormContext{
     Next: (StepNumber: number) => void;
@@ -56,9 +60,13 @@ const FormContext = createContext<IFormContext>({
         partTSalPS:"",
         onDravailfois:"",
         combChaqF:"",
-        Combienmange:"",
+        Combienmange:0,
         Casaccident:true,
         ChangeHousemade:true,
+        coutPTM:0,
+        coutPTH:0,
+        coutTP:0,
+        coutOndemande:0,
     },
     setFormData:()=>{},
 });
@@ -66,7 +74,6 @@ interface IProps{
     children:ReactNode;
 }
 export function FormProvider({children}: IProps){
-
     const [step,setStep]=useState(1);
     const [formData,setFormData] =useState<IFormData>({        
             prenom:"",
@@ -88,9 +95,13 @@ export function FormProvider({children}: IProps){
             partTSalPS:"",
             onDravailfois:"",
             combChaqF:"",
-            Combienmange:"",
+            Combienmange:0,
             Casaccident:true,
             ChangeHousemade:true,
+            coutPTM:0,
+            coutPTH:0,
+            coutTP:0,
+            coutOndemande:0,
         },
     );
     function Next(StepNumber:number){

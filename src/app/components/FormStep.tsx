@@ -13,13 +13,14 @@ import Electricite from "./Electricite";
 import Clima from "./Clima";
 import Douche from "./Douche";
 import ComfoistravPS from "./PartT_ComfoistravPS";
-import PartT_combienparS from "./PartT_combienparS";
 import OndemandFoiPM from "./OndemandFoiPM";
-import PartT_combienchaquefois from "./PartT_combienchaquefois";
 import PartT_ComfoistravPS from "./PartT_ComfoistravPS";
 import Combienmange from "./Combienmange";
 import Casaccident from "./Casaccident";
 import ChangeHousemade from "./ChangeHousemade";
+import PartT_combienparS from "./PartT_combienparS";
+import Oncombienchaquefois from "./Oncombienchaquefois";
+
 export function FormStep(){
   const {step}=useformState();
   switch(step){
@@ -54,7 +55,7 @@ export function FormStep(){
     case 15:
         return <OndemandFoiPM/>;
     case 16:
-        return <PartT_combienchaquefois/>;
+        return <Oncombienchaquefois/>;
     case 17:
             return <RProduit/>;
     case 18:
