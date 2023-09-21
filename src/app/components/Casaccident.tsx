@@ -105,7 +105,7 @@ export default function Casaccident() {
                 // Set RP to true when "Oui" is clicked
                 setRP(true);
               }}
-              className="text-l border border-indigo-950 my-4 hover:text-white hover:border-white bg-gray-200 rounded-xl hover:bg-blue-600 text-white font-semibold py-2 px-4"
+              className="text-l border border-indigo-950 my-4 hover:text-white hover:border-white bg-gray-200 rounded-xl hover:bg-blue-600 text-black font-semibold py-2 px-4"
             >
               Oui
             </button>
@@ -115,7 +115,7 @@ export default function Casaccident() {
                 // Set RP to false when "Non" is clicked
                 setRP(false);
               }}
-              className="text-l border border-indigo-950 text-white bg-gray-200 hover:border-white rounded-xl hover:text-white hover:bg-blue-600 font-semibold py-2 px-4"
+              className="text-l border border-indigo-950 text-black bg-gray-200 hover:border-white rounded-xl hover:text-white hover:bg-blue-600 font-semibold py-2 px-4"
             >
               Non
             </button> </div>
