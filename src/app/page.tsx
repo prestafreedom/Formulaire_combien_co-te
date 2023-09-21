@@ -14,7 +14,7 @@ export default function Home() {
 	<div className="absolute w-48 h-48 rounded-xl bg-sky-600 -bottom-6 -right-10 transform rotate-12 hidden md:block">
 	</div>
      <FormProvider>
-     <Casaccident />
+     <FormStep />
      </FormProvider>
      <div className="w-40 h-40 absolute bg-sky-600 rounded-full top-0 right-12 hidden md:block"></div>
 		<div
