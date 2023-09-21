@@ -2,7 +2,7 @@
 import { type } from "os";
 import { createClient } from '@supabase/supabase-js';
 import { useForm} from 'react-hook-form';
-import {useformState } from "./FormContext";
+import {useFormState } from "./FormContext";
 import { useState } from "react";
  type TFormValues = {
   email:string;
@@ -12,7 +12,7 @@ import { useState } from "react";
  };
 export default function PTP(){
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
-  const {Next,Back,setFormData,formData,} = useformState();
+  const {Next,Back,setFormData,formData,} = useFormState();
   const { register,handleSubmit} =useForm<TFormValues>({
     defaultValues:formData,
   });
@@ -79,7 +79,7 @@ function handleBackButtonClick(data: TFormValues) {
   <img src="Logo.png" alt="Circle" className="  object-cover" />
 </div>
 </div>			
-    <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Est-ce qu'elle Dort chez vous  ? </p>
+    <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">Est-ce quelle Dort chez vous  ? </p>
   </div>
   <div className="space-y-4 ">
 

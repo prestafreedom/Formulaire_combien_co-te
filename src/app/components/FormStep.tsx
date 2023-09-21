@@ -1,6 +1,6 @@
 
 import Page2 from "./Page2";
-import { useformState } from "./FormContext"; 
+import { useFormState } from "./FormContext"; 
 import Page3 from "./Page3";
 import Page1 from "./Page1";
 import PTP from "./PTP";
@@ -22,7 +22,7 @@ import PartT_combienparS from "./PartT_combienparS";
 import Oncombienchaquefois from "./Oncombienchaquefois";
 
 export function FormStep(){
-  const {step}=useformState();
+  const {step}=useFormState();
   switch(step){
     case 1:
         return <Page1/>;

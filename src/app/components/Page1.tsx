@@ -2,7 +2,7 @@
 import { type } from "os";
 import { createClient } from '@supabase/supabase-js';
 import { useForm } from 'react-hook-form';
-import { useformState } from "./FormContext";
+import { useFormState } from "./FormContext";
 
  type TFormValues = {
    prenom: string;
@@ -11,7 +11,7 @@ import { useformState } from "./FormContext";
  };
 export default function Page1(){
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
-  const {Next,setFormData,formData}=useformState();
+  const {Next,setFormData,formData}=useFormState();
     const { register,handleSubmit} =useForm<TFormValues>({
 
       defaultValues :formData,

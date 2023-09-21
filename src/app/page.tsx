@@ -1,5 +1,4 @@
 "use client";
-import Image from 'next/image'
 import UsernameForm from "./components/Page1";
 import { useState } from 'react';
 import { FormProvider } from './components/FormContext';

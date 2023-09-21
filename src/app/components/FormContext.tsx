@@ -118,6 +118,6 @@ export function FormProvider({children}: IProps){
     </FormContext.Provider>
     );
 }
-export function useformState(){
+export function useFormState(){
   return useContext(FormContext);
 }
