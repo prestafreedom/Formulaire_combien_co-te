@@ -1,12 +1,10 @@
 "use client";
-import { type } from "os";
 import { createClient } from '@supabase/supabase-js';
 import { useForm } from 'react-hook-form';
 import { useformState } from "./FormContext";
 import { useState } from "react";
 import React from "react";
-import { Button, Modal, ModalBody, ModalFooter } from "reactstrap";
-import { data } from "autoprefixer";
+import { Modal } from "reactstrap";
 import Link from "next/link";
 
 type TFormValues = {
@@ -22,7 +20,7 @@ type TFormValues = {
 export default function Casaccident() {
   const [modalOpen, setModalOpen] = React.useState(false);
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
-  const { Next, Back, setFormData, formData } = useformState();
+  const {Back, setFormData, formData } = useformState();
   const { register, handleSubmit } = useForm<TFormValues>({
     defaultValues: formData,
   });
@@ -149,20 +147,6 @@ export default function Casaccident() {
                 <span> <Link href="https://prestafreedom.com/devis ">https://prestafreedom.com/devis</Link> </span>
 
               </div>
-
-              {/*footer*/}
-              {/* <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
-                <Button
-                  color="secondary"
-                  type="button"
-                  onClick={() => setModalOpen(!modalOpen)}
-                >
-                  Close
-                </Button>
-                <Button color="primary" type="button">
-                  Save changes
-                </Button>
-              </div> */}
             </div>
           </div>
         </Modal>
