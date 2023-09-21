@@ -20,7 +20,7 @@ type TFormValues = {
 export default function Casaccident() {
   const [modalOpen, setModalOpen] = React.useState(false);
   const supabase = createClient('https://aircrqmfhskltskuuzfs.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpcmNycW1maHNrbHRza3V1emZzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODk2MDE1NzcsImV4cCI6MjAwNTE3NzU3N30.jNOkALDaV8hxb4gdx9cOZ0V14c_jWwn3a-w5t723Fc8');
-  const { Back, setFormData, formData } = useFormState();
+  const {Back, setFormData, formData } = useFormState();
   const { register, handleSubmit } = useForm<TFormValues>({
     defaultValues: formData,
   });
@@ -92,7 +92,7 @@ export default function Casaccident() {
               <Image src="Logo.png" alt="Circle" className="  object-cover" />
             </div>
           </div>
-          <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">En cas daccident au travail,êtes-vous responsable ?</p>
+          <p className="w-80 text-center text-sm mb-8 font-semibold text-gray-700 tracking-wide cursor-pointer">En cas d'accident au travail,êtes-vous responsable ?</p>
         </div>
         <div className="space-y-4 ">
 
@@ -118,7 +118,7 @@ export default function Casaccident() {
               Non
             </button> </div>
         </div>
-        <div className="text-center mt-6 flex justify-evenly">
+        <div className="text-center mt-6 flex justify-evenly ">
           <button type="button" onClick={() => Back(1)} className="text-l  text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Back</button>
           <button type="submit" onClick={() => setModalOpen(!modalOpen)} className="text-l text-white bg-sky-600 rounded-2xl hover:bg-blue-600 font-semibold py-2 px-4">Next</button>
         </div>
@@ -142,7 +142,7 @@ export default function Casaccident() {
               {/*body*/}
               <div className=" text-white relative p-6  flex   flex-col  justify-evenly  flex-auto">
                 {/* Add your modal content here */}
-                <p className=" font-bold  ">Cest le coût réel que vous payez pour le service de ménage mensuel</p>
+                <p className=" font-bold  ">C'est le coût réel que vous payez pour le service de ménage mensuel</p>
                 <h1 className="text-white" >Si vous souhaitez économiser votre argent avec un très bon Qualité de ménage avec un service professionnel, essayez de remplir le formulaire ci-dessous pour profiter du test gratuit.</h1>
                 <span> <Link href="https://prestafreedom.com/devis ">https://prestafreedom.com/devis</Link> </span>
 

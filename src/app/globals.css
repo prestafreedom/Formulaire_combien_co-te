@@ -69,9 +69,20 @@ button.active {
     margin-bottom: 230px;
     left: 0;
 }
-.popup{
- width: 600px;
- height: 600px;
- background-color: rgba(6, 107, 165, 0.74);
- backdrop-filter: blur(15px);
+.popup {
+  width: 90%;
+  max-width: 400px; /* Adjust max width as needed */
+  height: auto; /* Let the content determine the height */
+  background-color: rgba(6, 107, 165, 0.74);
+  backdrop-filter: blur(15px);
+  padding: 1rem; /* Adjust padding as needed */
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    padding: 0.5rem; /* Adjust padding for smaller screens */
+  }
 }
